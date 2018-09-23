@@ -1,8 +1,6 @@
 package com.example.msi_gl62.workshop.ui;
 
 import android.content.Intent;
-
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
