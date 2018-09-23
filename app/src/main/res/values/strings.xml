@@ -16,4 +16,9 @@
     <string name="text_hi">WORKSHOP </string>
     <string name="text_by">by Grand ats </string>
 
+    <!-- bumttom_sheet_layout-->
+    <string name="send">send </string>
+    <string name="text">Text</string>
+    <string name="subject">Subject</string>
+
 </resources>
