@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">workshop</string>
+
+    <!-- layout_toolbar -->
+    <string name="text_toolbar">หน้าหลัก</string>
+
+    <!-- activity_insert -->
+    <string name="text_name">Name</string>
+    <string name="text_password">Password</string>
+    <string name="text_email">email</string>
+    <string name="text_tel">Tel</string>
+    <string name="text_address">address</string>
+
+
+    <!-- activity_login -->
+    <string name="text_hi">WORKSHOP </string>
+    <string name="text_by">by Grand ats </string>
+
+</resources>

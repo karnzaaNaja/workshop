@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/imageUser"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/boy" />
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/nameUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="70dp"
+        android:text="@string/text_name"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/emailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/nameUser"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/text_email"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black" />
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/telUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/emailUser"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/text_tel"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black" />
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/addressUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/telUser"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/text_address"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black" />
+
+
+    <ImageView
+        android:id="@+id/call"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imageUser"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/phone_call" />
+
+
+</RelativeLayout>
+
