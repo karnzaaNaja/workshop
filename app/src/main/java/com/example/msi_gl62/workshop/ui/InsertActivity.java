@@ -11,8 +11,8 @@ import com.example.msi_gl62.workshop.R;
 import com.example.msi_gl62.workshop.sqldatabase.DatabaseHelper;
 
 public class InsertActivity extends AppCompatActivity {
-    private EditText et_name,et_pass,et_email,et_tel,et_address;
-    private Button btn_insert;
+    private EditText edtName,edtPassword,edtEmail,edtTel,edtAddress;
+    private Button btnInsert;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,7 @@ public class InsertActivity extends AppCompatActivity {
 
         bindView();
 
-        btn_insert.setOnClickListener(new View.OnClickListener() {
+        btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 insertData();
@@ -29,8 +29,8 @@ public class InsertActivity extends AppCompatActivity {
         });
         if(bundle != null){
             final String position = bundle.getString("position");
-            btn_insert.setText("update");
-            btn_insert.setOnClickListener(new View.OnClickListener() {
+            btnInsert.setText("update");
+            btnInsert.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     updateData(position);
@@ -41,21 +41,21 @@ public class InsertActivity extends AppCompatActivity {
     }
 
     private void bindView() {
-        et_name = findViewById(R.id.name);
-        et_pass = findViewById(R.id.pass);
-        et_email = findViewById(R.id.email);
-        et_tel =findViewById(R.id.tel);
-        et_address=findViewById(R.id.address);
-        btn_insert = findViewById(R.id.btn_insert);
+        edtName = findViewById(R.id.name);
+        edtPassword = findViewById(R.id.pass);
+        edtEmail = findViewById(R.id.email);
+        edtTel=findViewById(R.id.tel);
+        edtAddress=findViewById(R.id.address);
+        btnInsert = findViewById(R.id.btn_insert);
 
     }
 
     private void insertData(){
-        String name = et_name.getText().toString();
-        String pass = et_pass.getText().toString();
-        String email = et_email.getText().toString();
-        String tel = et_tel.getText().toString();
-        String address = et_address.getText().toString();
+        String name = edtName.getText().toString();
+        String pass = edtPassword.getText().toString();
+        String email = edtEmail.getText().toString();
+        String tel = edtTel.getText().toString();
+        String address = edtAddress.getText().toString();
         if(!name.isEmpty()&&!pass.isEmpty()&&!email.isEmpty()){
             DatabaseHelper helper = new DatabaseHelper(this);
             helper.insertUser(name,pass,email,tel,address);
@@ -66,11 +66,12 @@ public class InsertActivity extends AppCompatActivity {
     }
 
     private void updateData(String id){
-        String name = et_name.getText().toString();
-        String pass = et_pass.getText().toString();
-        String email = et_email.getText().toString();
-        String tel = et_tel.getText().toString();
-        String address = et_address.getText().toString();
+        String name = edtName.getText().toString();
+        String pass = edtPassword.getText().toString();
+        String email = edtEmail.getText().toString();
+
+        String tel = edtTel.getText().toString();
+        String address = edtAddress.getText().toString();
         if(!name.isEmpty()&&!pass.isEmpty()&&!email.isEmpty()){
             DatabaseHelper helper = new DatabaseHelper(this);
             helper.updateUser(id,name,pass,email,tel,address);
