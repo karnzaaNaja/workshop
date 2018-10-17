@@ -19,15 +19,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String ID = "id";
     private static final String TABLE_USER = "user";
     private static final String COL_NAME = "name";
-    private static final String COL_PASS = "pass";
     private static final String COL_EMAIL = "email";
     private static final String COL_TEL = "tel";
     private static final String COL_ADDRESS = "address";
+    private static final String COL_SEX = "sex";
 
 
     private static final String CREATE_DATABASE =
             "CREATE TABLE " + TABLE_USER + "(" + ID + " INTEGER PRIMARY KEY,"
-                    + COL_NAME + " VARCHAR(50)," + COL_PASS + " VARCHAR(50),"+COL_TEL + " VARCHAR(50),"+COL_ADDRESS + " VARCHAR(50),"
+                    + COL_NAME + " VARCHAR(50)," + COL_TEL + " VARCHAR(50)," + COL_SEX + " VARCHAR(50)," + COL_ADDRESS + " VARCHAR(50),"
                     + COL_EMAIL + " VARCHAR(50)" + ")";
 
 
@@ -49,23 +49,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<UserModel> readUser(){
+    public List<UserModel> readUser() {
         List<UserModel> listUser = new ArrayList<>();
         String select = "SELECT * FROM " + TABLE_USER;
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(select,null);
-        if(cursor.moveToFirst()){
-            do{
+        Cursor cursor = db.rawQuery(select, null);
+        if (cursor.moveToFirst()) {
+            do {
                 UserModel model = new UserModel();
                 model.setId(cursor.getString(cursor.getColumnIndex(ID)));
                 model.setName(cursor.getString(cursor.getColumnIndex(COL_NAME)));
-                model.setPass(cursor.getString(cursor.getColumnIndex(COL_PASS)));
                 model.setEmail(cursor.getString(cursor.getColumnIndex(COL_EMAIL)));
                 model.setTel(cursor.getString(cursor.getColumnIndex(COL_TEL)));
                 model.setAddress(cursor.getString(cursor.getColumnIndex(COL_ADDRESS)));
+                model.setSex(cursor.getString(cursor.getColumnIndex(COL_SEX)));
                 listUser.add(model);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         db.close();
         cursor.close();
@@ -74,34 +74,66 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void insertUser(String name,String pass,String email,String tel,String address){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("name",name);
-        values.put("pass",pass);
-        values.put("email",email);
-        values.put("tel",tel);
-        values.put("address",address);
+    public List<UserModel> search(String newText) {
 
-        db.insert(TABLE_USER,null,values);
+        List<UserModel> listUser = new ArrayList<>();
+
+        Log.e("Test","Test"+newText);
+        String select = "select * from " + TABLE_USER + " where name =" + newText;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+       // Cursor cursor = db.rawQuery(select, null);
+
+
+        String query = "select * from " + TABLE_USER + " where name=?";
+        Cursor cursor = db.rawQuery(query, new String[] {newText});
+
+        if (cursor.moveToFirst()) {
+            do {
+                UserModel model = new UserModel();
+                model.setId(cursor.getString(cursor.getColumnIndex(ID)));
+                model.setName(cursor.getString(cursor.getColumnIndex(COL_NAME)));
+                model.setEmail(cursor.getString(cursor.getColumnIndex(COL_EMAIL)));
+                model.setTel(cursor.getString(cursor.getColumnIndex(COL_TEL)));
+                model.setAddress(cursor.getString(cursor.getColumnIndex(COL_ADDRESS)));
+                model.setSex(cursor.getString(cursor.getColumnIndex(COL_SEX)));
+                listUser.add(model);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+        cursor.close();
+
+        return listUser;
     }
 
-    public void updateUser(String id,String name,String pass,String email,String tel,String address){
+
+    public void insertUser(String name, String email, String tel, String address, String sex) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("name",name);
-        values.put("pass",pass);
-        values.put("email",email);
-        values.put("tel",tel);
-        values.put("address",address);
+        values.put("name", name);
+        values.put("email", email);
+        values.put("tel", tel);
+        values.put("address", address);
+        values.put("sex", sex);
 
-        db.update(TABLE_USER,values,ID + " = ?",new String[]{id});
+        db.insert(TABLE_USER, null, values);
+    }
+
+    public void updateUser(String id, String name, String email, String tel, String address) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("email", email);
+        values.put("tel", tel);
+        values.put("address", address);
+
+        db.update(TABLE_USER, values, ID + " = ?", new String[]{id});
         Log.i(TAG, "UPDATE DATABASE");
     }
 
-    public void deleteUser(String id){
+    public void deleteUser(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_USER,ID + " = ?",new String[]{id});
+        db.delete(TABLE_USER, ID + " = ?", new String[]{id});
         Log.i(TAG, "DELETE DATABASE");
     }
 }

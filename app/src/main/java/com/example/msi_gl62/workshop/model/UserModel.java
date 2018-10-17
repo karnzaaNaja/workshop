@@ -1,12 +1,14 @@
 package com.example.msi_gl62.workshop.model;
 
 public class UserModel {
-    String id;
-    String name;
-    String pass;
-    String email;
-    String tel;
-    String address;
+    private String id;
+    private String name;
+    private String email;
+    private String tel;
+    private String address;
+    private String sex;
+
+
 
     public String getId() {
         return id;
@@ -24,13 +26,6 @@ public class UserModel {
         this.name = name;
     }
 
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
 
     public String getEmail() {
         return email;
@@ -56,12 +51,22 @@ public class UserModel {
         return address;
     }
 
+
+    public String getSex() {
+        return sex;
+    }
+
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     @Override
     public String toString() {
-        return getName()+"\n"
-                +getPass()+"\n"
-                +getEmail()+"\n"
-                +getTel()+"\n"
-                +getAddress();
+        return getName() + "\n"
+                + getEmail() + "\n"
+                + getTel() + "\n"
+                + getSex() + "\n"
+                + getAddress();
     }
 }

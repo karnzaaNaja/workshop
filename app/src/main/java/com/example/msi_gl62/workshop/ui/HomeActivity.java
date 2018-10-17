@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.msi_gl62.workshop.R;
@@ -27,9 +28,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
+
     private AdapterListView adapterListView;
+
     private List<UserModel> readUser;
+    private List<UserModel> readUserlSearch;
     private ListView listView;
+    private SearchView searchView;
     FloatingActionMenu materialDesignFAM;
     FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
 
@@ -46,12 +51,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        Bundle bundle = getIntent().getExtras();
-        String textName = bundle.getString("name");
-        String textPassword = bundle.getString("password");
-        Toast.makeText(HomeActivity.this,"User : "+ textName+" "+" password : "+ textPassword,Toast.LENGTH_SHORT).show();
+//        Bundle bundle = getIntent().getExtras();
+//        String textName = bundle.getString("name");
+//        String textPassword = bundle.getString("password");
+//        Toast.makeText(HomeActivity.this,"User : "+ textName+" "+" password : "+ textPassword,Toast.LENGTH_SHORT).show();
 
         floating();
+        searchView();
 
     }
 
@@ -111,6 +117,35 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    private  void searchView(){
+       // searchView=findViewById(R.id.searchView);
+//        searchView.setQueryHint("Search View");
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                Toast.makeText(getBaseContext(), query, Toast.LENGTH_LONG).show();
+//
+//                    DatabaseHelper helper = new DatabaseHelper(HomeActivity.this);
+//                    readUserlSearch = helper.search(query);
+//                    ArrayList<UserModel> listUserSearch = (ArrayList<UserModel>) readUserlSearch;
+//                    adapterListView = new AdapterListView(listUserSearch, getApplicationContext());
+//                    listView.setAdapter(adapterListView);
+//                    registerForContextMenu(listView);
+//
+//
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//
+//
+//                return false;
+//            }
+//        });
+    }
 
 
     private void getUser() {
@@ -123,7 +158,6 @@ public class HomeActivity extends AppCompatActivity {
             listView.setAdapter(adapterListView);
             registerForContextMenu(listView);
         }
-
     }
 
     @Override

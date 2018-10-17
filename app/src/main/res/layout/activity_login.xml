@@ -14,14 +14,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/baclogin" />
 
-    <Button
-        android:id="@+id/btnSubmitLoginFacebook"
-        android:layout_width="230dp"
-        android:layout_height="32dp"
-        android:layout_below="@+id/textWelcome"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btnlogin" />
+
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/hiTextView"
